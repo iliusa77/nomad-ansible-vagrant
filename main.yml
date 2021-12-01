@@ -2,7 +2,7 @@
 - name: Install Consul on nomad-server
   hosts: nomad-server
   vars:
-    - consul_server_ip: 192.168.56.101
+    - consul_server_ip: "{{ hostvars['nomad-server']['ansible_default_ipv4']['address'] }}"
   become: yes
   roles:
    - consul-server
@@ -10,8 +10,8 @@
 - name: Install Consul on consul-client-one
   hosts: consul-client-one
   vars:
-    - consul_server_ip: 192.168.56.101
-    - consul_client_ip: 192.168.56.102
+    - consul_server_ip: "{{ hostvars['nomad-server']['ansible_default_ipv4']['address'] }}"
+    - consul_client_ip: "{{ hostvars['consul-client-one']['ansible_default_ipv4']['address'] }}"
   become: yes
   roles:
    - consul-client
@@ -19,8 +19,8 @@
 - name: Install Consul on consul-client-two
   hosts: consul-client-two
   vars:
-    - consul_server_ip: 192.168.56.101
-    - consul_client_ip: 192.168.56.103
+    - consul_server_ip: "{{ hostvars['nomad-server']['ansible_default_ipv4']['address'] }}"
+    - consul_client_ip: "{{ hostvars['consul-client-two']['ansible_default_ipv4']['address'] }}"
   become: yes
   roles:
    - consul-client
@@ -28,8 +28,8 @@
 - name: Install Nomad on nomad-server
   hosts: on nomad-server
   vars:
-    - nomad_server_ip: 192.168.56.101
-    - consul_server_ip: 192.168.56.101
+    - nomad_server_ip: "{{ hostvars['nomad-server']['ansible_default_ipv4']['address'] }}"
+    - consul_server_ip: "{{ hostvars['nomad-server']['ansible_default_ipv4']['address'] }}"
   become: yes
   roles:
    - nomad-server
