@@ -1,0 +1,15 @@
+{
+"bind_addr": "{{ hostvars['nomad-server'].ansible_host }}",
+"advertise_addr": "{{ hostvars['nomad-server'].ansible_host }}",
+"addresses": {
+"http": "0.0.0.0"
+},
+"bootstrap": true,
+"server": true,
+"datacenter": "dc1",
+"data_dir": "/var/consul",
+"encrypt": "{{ consul_key }}",
+"log_level": "INFO",
+"enable_syslog": true,
+"start_join": ["{{ hostvars['nomad-server'].ansible_host }}"]
+}

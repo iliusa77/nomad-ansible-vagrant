@@ -1,0 +1,17 @@
+[nomad-server]
+192.168.56.101 ansible_ssh_private_key_file=.vagrant/machines/nomad-server/virtualbox/private_key ansible_ssh_user=vagrant
+
+[consul-client-one]
+192.168.56.102 ansible_ssh_private_key_file=.vagrant/machines/consul-client-one/virtualbox/private_key ansible_ssh_user=vagrant
+
+[consul-client-two]
+192.168.56.103 ansible_ssh_private_key_file=.vagrant/machines/consul-client-one/virtualbox/private_key ansible_ssh_user=vagrant
+
+[consul-hosts:children]
+nomad-server
+consul-client-one
+consul-client-two
+
+[nomad-hosts:children]
+nomad-server
+

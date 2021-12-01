@@ -1,0 +1,12 @@
+---
+- name: Install Consul
+  hosts: consul-hosts
+  become: yes
+  roles:
+   - consul
+
+# - name: Install Nomad
+#   hosts: nomad-hosts
+#   become: yes
+#   roles:
+#    - nomad
