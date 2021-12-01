@@ -4,12 +4,12 @@
   box: bento/ubuntu-18.04
   ram: 512
   ip: 192.168.56.101
-- name: nomad-client-one
+- name: consul-client-one
   hostname: client-one
   box: bento/ubuntu-18.04
   ram: 512
   ip: 192.168.56.102
-- name: nomad-client-two
+- name: consul-client-two
   hostname: client-two
   box: bento/ubuntu-18.04
   ram: 512

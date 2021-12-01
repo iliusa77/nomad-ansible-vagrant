@@ -1,6 +1,6 @@
 {
-"bind_addr": "{{ hostvars['nomad-server'].ansible_host }}",
-"advertise_addr": "{{ hostvars['nomad-server'].ansible_host }}",
+"bind_addr": "{{ consul_server_ip }}",
+"advertise_addr": "{{ consul_server_ip }}",
 "addresses": {
 "http": "0.0.0.0"
 },
@@ -11,5 +11,5 @@
 "encrypt": "{{ consul_key }}",
 "log_level": "INFO",
 "enable_syslog": true,
-"start_join": ["{{ hostvars['nomad-server'].ansible_host }}"]
+"start_join": ["{{ consul_server_ip }}"]
 }

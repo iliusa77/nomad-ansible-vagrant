@@ -1,12 +1,35 @@
 ---
-- name: Install Consul
-  hosts: consul-hosts
+- name: Install Consul on nomad-server
+  hosts: nomad-server
+  vars:
+    - consul_server_ip: 192.168.56.101
   become: yes
   roles:
-   - consul
+   - consul-server
 
-# - name: Install Nomad
-#   hosts: nomad-hosts
-#   become: yes
-#   roles:
-#    - nomad
+- name: Install Consul on consul-client-one
+  hosts: consul-client-one
+  vars:
+    - consul_server_ip: 192.168.56.101
+    - consul_client_ip: 192.168.56.102
+  become: yes
+  roles:
+   - consul-client
+
+- name: Install Consul on consul-client-two
+  hosts: consul-client-two
+  vars:
+    - consul_server_ip: 192.168.56.101
+    - consul_client_ip: 192.168.56.103
+  become: yes
+  roles:
+   - consul-client
+
+- name: Install Nomad on nomad-server
+  hosts: on nomad-server
+  vars:
+    - nomad_server_ip: 192.168.56.101
+    - consul_server_ip: 192.168.56.101
+  become: yes
+  roles:
+   - nomad-server
