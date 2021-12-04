@@ -12,7 +12,7 @@ consul {
   client_auto_join    = true
 }
 
-bind_addr = "{{  }}"
+bind_addr = "{{ nomad_server_ip }}"
 
 advertise {
   http = "{{ nomad_server_ip }}"

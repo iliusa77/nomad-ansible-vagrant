@@ -4,6 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
+User=root
+Group=root
 ExecStart=/bin/bash -c '/usr/local/bin/consul agent -config-dir /etc/consul.d/bootstrap -ui'
 TimeoutStartSec=0
 

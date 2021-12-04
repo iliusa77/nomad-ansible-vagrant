@@ -2,5 +2,5 @@
 - name: Restart Nomad 
   systemd:
     name: nomad
-    state: started
+    state: restarted
     enabled: yes

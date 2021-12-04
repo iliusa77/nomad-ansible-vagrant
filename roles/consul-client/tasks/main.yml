@@ -18,11 +18,6 @@
     remote_src: yes
   check_mode: false
 
-
-- name: Generate Consul secret
-  shell: consul keygen
-  register: consul_key
-
 - name: Create needed folders
   file:
     path: "{{ item }}"
