@@ -68,7 +68,7 @@
 
 - name: Pause for Nomad service
   pause:
-    minutes: 2
+    minutes: 3
 
 - name: Plan demo job 
   shell: "nomad job plan -address=http://{{ nomad_server_ip }}:4646 example.nomad"
