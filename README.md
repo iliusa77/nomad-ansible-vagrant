@@ -4,10 +4,10 @@ Create Consul key and put in `consul_key` variable in main.yml
 
 Create Vagrant cluster
 ```
-vagrant up
+vagrant up --provision
 ```
 
-Setup Consul and Nomad
+Setup Consul and Nomad + demo job
 ```
 ansible-playbook -i hosts main.yml -v
 ```
@@ -19,5 +19,5 @@ http://192.168.56.101:8500/ui/dc1/services
 
 Open Nomad
 ```
-
+http://192.168.56.101:4646
 ```

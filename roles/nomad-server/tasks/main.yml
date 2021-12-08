@@ -43,11 +43,41 @@
   notify:
     - Restart Nomad
 
-- name: Create demo job
-  shell: mkdir ~/nomad_jobs
+- name: Create Nomad jobs directory
+  file:
+    path: /home/vagrant/nomad_jobs
+    state: directory
+    mode: '0755'
+    owner: vagrant
+    group: vagrant
+
+- name: Create demo job file
+  file:
+    path: /home/vagrant/nomad_jobs/example.nomad
+    state: touch
+    mode: '0644'
+    owner: vagrant
+    group: vagrant
+
+- name: Insert demo job content
+  blockinfile:
+    block: "{{ lookup('file', '../templates/example_job.j2') }}"
+    path: /home/vagrant/nomad_jobs/example.nomad
+    owner: vagrant
+    group: vagrant
+
+- name: Plan demo job 
+  shell: "nomad job plan -address=http://192.168.56.101:4646 example.nomad"
+  args:
+    chdir: /home/vagrant/nomad_jobs
+  become_user: vagrant
   ignore_errors: true
 
-- name: Init nomad demo job
-  shell: cd ~/nomad_jobs && nomad init && nomad job plan -address=http://192.168.56.101:4646 example.nomad 
+- name: Run demo job
+  shell: "nomad job run -address=http://192.168.56.101:4646 example.nomad"
+  args:
+    chdir: /home/vagrant/nomad_jobs
+  become_user: vagrant
   ignore_errors: true
+
 
