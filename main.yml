@@ -3,7 +3,7 @@
   hosts: nomad-server
   vars:
     - consul_server_ip: 192.168.56.101
-    - consul_key: "YZP6RQCUcyoST7Y9iCky6g=="
+    - consul_key: "Ss89NxNorsdTfupJv22OHQ=="
   become: yes
   roles:
    - consul-server
@@ -13,7 +13,7 @@
   vars:
     - consul_server_ip: 192.168.56.101
     - consul_client_ip: 192.168.56.102
-    - consul_key: "YZP6RQCUcyoST7Y9iCky6g=="
+    - consul_key: "Ss89NxNorsdTfupJv22OHQ=="
   become: yes
   roles:
    - consul-client
@@ -23,7 +23,7 @@
   vars:
     - consul_server_ip: 192.168.56.101
     - consul_client_ip: 192.168.56.103
-    - consul_key: "YZP6RQCUcyoST7Y9iCky6g=="
+    - consul_key: "Ss89NxNorsdTfupJv22OHQ=="
   become: yes
   roles:
    - consul-client

@@ -66,15 +66,19 @@
     owner: vagrant
     group: vagrant
 
+- name: Pause for Nomad service
+  pause:
+    minutes: 2
+
 - name: Plan demo job 
-  shell: "nomad job plan -address=http://192.168.56.101:4646 example.nomad"
+  shell: "nomad job plan -address=http://{{ nomad_server_ip }}:4646 example.nomad"
   args:
     chdir: /home/vagrant/nomad_jobs
   become_user: vagrant
   ignore_errors: true
 
 - name: Run demo job
-  shell: "nomad job run -address=http://192.168.56.101:4646 example.nomad"
+  shell: "nomad job run -address=http://{{ nomad_server_ip }}:4646 example.nomad"
   args:
     chdir: /home/vagrant/nomad_jobs
   become_user: vagrant
